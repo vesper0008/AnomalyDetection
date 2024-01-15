@@ -1,7 +1,5 @@
 import cv2
 import numpy as np
-from matplotlib import pyplot as plt
-from sklearn.metrics import roc_curve, roc_auc_score, confusion_matrix, classification_report
 from sklearn.model_selection import train_test_split
 from tensorflow.keras import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
@@ -47,15 +45,4 @@ model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accur
 model.fit(X_train.reshape(-1, 224, 224, 1), y_train, epochs=50, validation_data=(X_test.reshape(-1, 224, 224, 1), y_test))
 test_loss, test_acc = model.evaluate(X_test.reshape(-1, 224, 224, 1), y_test, verbose=2)
 y_pred = model.predict(X_test)
-fpr, tpr, _ = roc_curve(y_test, y_pred)
-auc = roc_auc_score(y_test, y_pred)
-conf_matrix = confusion_matrix(y_test, y_pred)
-classification_rep = classification_report(y_test, y_pred)
 print('\nTest accuracy:', test_acc)
-print("Confusion Matrix:\n", conf_matrix)
-print("Classification Report:\n", classification_rep)
-plt.plot(fpr, tpr, label="AUC"+str(auc))
-plt.ylabel('True Positive rate')
-plt.xlabel('False Positive Rate')
-plt.legend(loc=4)
-plt.show()
