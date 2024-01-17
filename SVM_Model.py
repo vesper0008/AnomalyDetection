@@ -21,10 +21,8 @@ def load_images(folder_path, label):
     return images_list, labels_list
 
 
-defective_images, defective_labels = load_images("/Users/tolunkeles/PycharmProjects/Anomaly Detection/archive"
-                                                 "/Defect_images", 1)
-non_defective_images, non_defective_labels = load_images("/Users/tolunkeles/PycharmProjects/Anomaly Detection"
-                                                         "/archive/NODefect_images/2306881-210020u", 0)
+defective_images, defective_labels = load_images("archive/Defect_images", 1)
+non_defective_images, non_defective_labels = load_images("archive/NODefect_images/2306881-210020u", 0)
 images = defective_images + non_defective_images
 labels = defective_labels + non_defective_labels
 X_train, X_test, y_train, y_test = train_test_split(images, labels, stratify=labels, test_size=0.2, random_state=42)

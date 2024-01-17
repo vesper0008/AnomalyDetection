@@ -20,10 +20,8 @@ def load_images(folder_path, label):
     return images_list, labels_list
 
 
-defective_images, defective_labels = load_images("/Users/tolunkeles/PycharmProjects/Anomaly Detection/archive"
-                                                 "/Defect_images", 1)
-non_defective_images, non_defective_labels = load_images("/Users/tolunkeles/PycharmProjects/Anomaly Detection"
-                                                         "/archive/NODefect_images/2306881-210020u", 0)
+defective_images, defective_labels = load_images("archive/Defect_images", 1)
+non_defective_images, non_defective_labels = load_images("archive/NODefect_images/2306881-210020u", 0)
 images = np.array(defective_images + non_defective_images)
 labels = np.array(defective_labels + non_defective_labels)
 images = images / 255.0
