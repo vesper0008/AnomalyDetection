@@ -8,16 +8,16 @@ import os
 
 
 def load_images(folder_path, label):
-    images = []
-    labels = []
+    images_list = []
+    labels_list = []
     for filename in os.listdir(folder_path):
         img_path = os.path.join(folder_path, filename)
         img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
         if img is not None:
             img = cv2.resize(img, (224, 224))
-            images.append(img.flatten())
-            labels.append(label)
-    return images, labels
+            images_list.append(img.flatten())
+            labels_list.append(label)
+    return images_list, labels_list
 
 
 defective_images, defective_labels = load_images("/Users/tolunkeles/PycharmProjects/Anomaly Detection/archive"
